@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  openvpn:
+    container_name: openvpn-ldap
+    cap_add:
+      - NET_ADMIN
+    build: .
+    stdin_open: true
+    tty: true
+    environment:
+      - OVPN_SERVER_CN=$OVPN_SERVER_CN
+      - LDAP_URI=$LDAP_URI
+      - LDAP_BASE_DN=$LDAP_BASE_DN
+      - LDAP_BIND_USER_DN=$LDAP_BIND_USER_DN
+      - LDAP_BIND_USER_PASS=$LDAP_BIND_USER_PASS
+      - LDAP_FILTER=$LDAP_FILTER
+      - LDAP_LOGIN_ATTRIBUTE=uid
+      - LDAP_TLS=false
+      - OVPN_ROUTES=10.0.0.0/8
+      - OVPN_VERBOSITY=6
+      - DEBUG=true
+    ports:
+      - 1194:1194/udp
