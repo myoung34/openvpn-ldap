@@ -45,7 +45,10 @@ if [ "${LDAP_LOGIN_ATTRIBUTE}x" == "x" ];        then export LDAP_LOGIN_ATTRIBUT
 if [ "${LDAP_TLS}x" == "x" ];                    then export LDAP_TLS="false";                                    fi
 if [ "${LDAP_TLS_VALIDATE_CERT}x" == "x" ];      then export LDAP_TLS_VALIDATE_CERT="true";                       fi
 if [ "${KEY_LENGTH}x" == "x" ];                  then export KEY_LENGTH="2048";                                   fi
+if [ "${FAIL2BAN_ENABLED}x" == "x" ];            then export FAIL2BAN_ENABLED="false";                            fi
+if [ "${FAIL2BAN_MAXRETRIES}x" == "x" ];         then export FAIL2BAN_MAXRETRIES="3";                             fi
 
+if [ "$FAIL2BAN_ENABLED" == "true" ]; then LOG_TO_STDOUT="false"; fi
 if [ "$LOG_TO_STDOUT" == "true" ]; then
  LOG_FILE="/proc/1/fd/1"
 else

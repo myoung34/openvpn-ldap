@@ -13,9 +13,14 @@ source "$CONFIGFILES/setup_pki.sh"
 
 if [ "${USE_CLIENT_CERTIFICATE}" != "true" ] ; then
  source "$CONFIGFILES/setup_ldap.sh"
+ source "$CONFIGFILES/setup_otp.sh"
 fi 
 
 source "$CONFIGFILES/create_server_config.sh"
+
+if [ "${FAIL2BAN_ENABLED}" == "true" ] ; then
+ source "$CONFIGFILES/setup_fail2ban.sh"
+fi
 
 echo
 echo "***************"
