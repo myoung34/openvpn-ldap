@@ -1,4 +1,5 @@
-LDAP_CONFIG="/etc/ldap_openvpn.conf"
+LDAP_CONFIG="/etc/openldap/ldap.conf"
+[[ ! -d "/etc/openldap" ]] && mkdir -p /etc/openldap
 
 echo "ldap: creating LDAP configuration"
 
@@ -9,10 +10,17 @@ uri $LDAP_URI
 base $LDAP_BASE_DN
 scope sub
 
+TLS_REQCERT allow
+
 ldap_version 3
 pam_crypt local
 
 EoLDAP
+
+
+if [ "${TLS_CACERTDIR}x" != "x" ] ; then
+ echo "TLS_CACERTDIR ${TLS_CACERTDIR}" >> $LDAP_CONFIG
+fi
 
 if [ "${LDAP_TLS}" == "true" ] ; then
  echo "ssl start_tls" >> $LDAP_CONFIG

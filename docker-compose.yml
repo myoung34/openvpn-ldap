@@ -16,6 +16,7 @@ services:
       - LDAP_BIND_USER_PASS=$LDAP_BIND_USER_PASS
       - LDAP_FILTER=$LDAP_FILTER
       - LDAP_LOGIN_ATTRIBUTE=uid
+      - TLS_CACERTDIR=/etc/openldap/certs
       - LDAP_TLS=false
       - OVPN_ROUTES=10.0.0.0/8
       - OVPN_VERBOSITY=6

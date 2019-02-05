@@ -1,5 +1,4 @@
-FROM centos:6.8
-#FROM amazonlinux:2018.03
+FROM amazonlinux:2018.03
 
 RUN yum -y install epel-release iptables bash nss-pam-ldapd ca-certificates
 RUN yum -y install --enablerepo="epel*" openvpn whatmask fail2ban
